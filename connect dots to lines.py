@@ -6,8 +6,6 @@ bild = cv.imread('E:/processed_maps/stitchedOutputProcessed.png')
 bild_re = ka.resize_img(bild)
 
 #global coordinates)
-global_x = 0
-global_y = 0
 
 x = 0
 temp_x = 0

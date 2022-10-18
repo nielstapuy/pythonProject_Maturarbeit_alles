@@ -75,7 +75,7 @@ if not error:
 
     stitched_img_re = ka.resize_img(stitched_img)
 
-    cv.imwrite("E:/processed_maps/stitchedOutputProcessed.png", stitched_img)
+    cv.imwrite("E:/processed_images/stitchedOutputProcessed.png", stitched_img)
 
     cv.imshow("Stitched Image Processed", stitched_img_re)
     k = cv.waitKey(0) & 0xff  # press ESC to exit

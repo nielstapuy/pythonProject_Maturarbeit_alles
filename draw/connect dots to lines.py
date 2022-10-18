@@ -5,6 +5,9 @@ import ka
 bild = cv.imread('E:/processed_images/stitchedOutputProcessed.png')
 bild_re = ka.resize_img(bild, scale=0.5)
 
+dot_values_file = open("dot_coordinates", "w")
+dot_values_file.close()
+
 #global coordinates)
 x = 0
 temp_x = 0
@@ -54,5 +57,7 @@ while True:
 cv.destroyAllWindows()
 cv.imwrite("E:/processed_images/lines_white.png", bild_re)
 
-print(values)
-values.write...
+#print(values)
+dot_values_file = open("dot_coordinates", "a")
+dot_values_file.write(str(values))
+dot_values_file.close()

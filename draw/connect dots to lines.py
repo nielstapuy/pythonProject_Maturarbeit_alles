@@ -2,11 +2,10 @@ import cv2 as cv
 import numpy as np
 import ka
 
-bild = cv.imread('E:/processed_maps/stitchedOutputProcessed.png')
-bild_re = ka.resize_img(bild)
+bild = cv.imread('E:/processed_images/stitchedOutputProcessed.png')
+bild_re = ka.resize_img(bild, scale=0.5)
 
 #global coordinates)
-
 x = 0
 temp_x = 0
 first_x = 0
@@ -14,6 +13,8 @@ first_x = 0
 y = 0
 temp_y = 0
 first_y = 0
+
+values = []
 
 
 # mouse callback function
@@ -25,6 +26,8 @@ def draw(event, current_x, current_y, flags, params):
         if x == 0 and y == 0:
             x = current_x
             y = current_y
+            values.append(x)
+            values.append(y)
             first_x = x
             first_y = y
 
@@ -33,6 +36,8 @@ def draw(event, current_x, current_y, flags, params):
             temp_y = y
             x = current_x
             y = current_y
+            values.append(x)
+            values.append((y))
 
 
 cv.imshow('Draw', bild_re)
@@ -47,6 +52,7 @@ while True:
 
     if cv.waitKey(1) & 0xFF == 27: break
 cv.destroyAllWindows()
-cv.imwrite("E:/processed_maps/lines_white.png", bild_re)
+cv.imwrite("E:/processed_images/lines_white.png", bild_re)
 
-
+print(values)
+values.write...

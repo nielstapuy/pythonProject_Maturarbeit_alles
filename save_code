@@ -1,0 +1,52 @@
+import cv2 as cv
+import numpy as np
+import ka
+
+bild = cv.imread('E:/processed_maps/stitchedOutputProcessed.png')
+bild_re = ka.resize_img(bild)
+
+#global coordinates
+x = 0
+temp_x = 0
+
+y = 0
+temp_y = 0
+
+first_call = 1
+
+
+# mouse callback function
+def draw(event, current_x, current_y, flags, params):
+    # hook up global variables
+    global first_call, temp_x, temp_y, x, y
+
+    if event == cv.EVENT_LBUTTONDOWN:
+
+        if first_call == 1:
+            x = current_x
+            y = current_y
+
+        elif first_call == 0:
+            temp_x = x
+            temp_y = y
+            x = current_x
+            y = current_y
+
+
+
+cv.imshow('Draw', bild_re)
+
+cv.setMouseCallback('Draw', draw)
+
+while True:
+    cv.imshow('Draw', bild_re)
+
+    if first_call == 0:
+        cv.line(bild_re, (temp_x, temp_y), (x, y), (255, 255, 255), thickness=3)
+
+    elif first_call == 1:
+        first_call == 0
+
+    if cv.waitKey(1) & 0xFF == 27: break
+cv.destroyAllWindows()
+cv.imwrite("E:/processed_maps/lines_white.png", bild_re)

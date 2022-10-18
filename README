@@ -1,0 +1,13 @@
+Heyhey
+
+Kurze Liste zu welches file für was ist:
+
+ka.py: resizing images
+connect dots to lines.py: Formen zeichnen
+for Loop.py: Versuch Stitching prozess zu optimieren
+pixel calculation_veraltet.py: alter Versuch Pixel zu berechnen (offene Fragen)
+pixels to meters.py: umrechnungsfunktion
+spielwiese.py: für tutorials und um zeug auszutesten
+stitching imags.py: Stitching Software-> SourceCode irgendein YT_Tut
+thresholding area and calculating pixels.py: Idee, dass man die gezeichnete Form thresholden kann und dann pixel zählen lässt
+Problem taucht allerdings bei bilder mit verschiedenen resizings auf etc.. Stimmt nicht wirklich, könnte aber eine einfache Lösung sein.

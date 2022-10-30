@@ -2,13 +2,13 @@ import numpy as np
 import cv2 as cv
 
 
-a = np.array([[0,1],[3,4]]) # row then column!
-print(a)
-print(a.shape)
+#a = np.array([[0,1],[3,4]]) # row then column!
+#print(a)
+#print(a.shape)
 
-b = np.append(a, [[7,1],[2,6]], axis= 1)
-print(b)
-print(b.shape)
+#b = np.append(a, [[7,1],[2,6]], axis= 1)
+#print(b)
+#print(b.shape)
 
 #NEUE IDEE: Koordinaten erst in normaler Liste speichern mit append und dann zu numpy umformen für Line
 #Problem wenn Anfangsliste den Punkt (0,0) enthält ist, dass dann der erste Strich aus dem Ursprung gezogen wird..
@@ -29,3 +29,13 @@ print(b.shape)
     #else:
         #print("Number is uneven")
     #i += 1
+
+import csv
+
+with open('data.csv') as csvfile:
+    with open('data.csv', 'w', newline='') as new_file:
+        csv_reader = csv.DictReader(csvfile)
+        fieldnames = ['firstname', 'lastname', 'email', 'age']
+        csv_writer = csv.DictWriter(new_file, fieldnames=fieldnames)
+        for row in csv_reader:
+            csv_writer.writerow(row)

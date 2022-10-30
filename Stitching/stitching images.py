@@ -23,9 +23,9 @@ imageStitcher = cv.Stitcher_create()
 error, stitched_img = imageStitcher.stitch(images)
 
 if not error:
-    re_stitch = ka.resize_img(stitched_img)
-    cv.imwrite("stitchedOutput2!.png", re_stitch)
-    cv.imshow("Stitched Image 2", re_stitch)
+    #re_stitch = ka.resize_img(stitched_img)
+    cv.imwrite("stitchedOutput2!.png", stitched_img)
+    cv.imshow("Stitched Image 2", stitched_img)
     k = cv.waitKey(0) & 0xff  # press ESC to exit
     if k == 27:
         cv.destroyAllWindows()

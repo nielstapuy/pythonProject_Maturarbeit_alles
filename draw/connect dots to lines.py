@@ -51,13 +51,15 @@ while True:
     cv.imshow('Draw', bild_re)
 
     if x != first_x and y != first_y:
-        cv.line(bild_re, (temp_x, temp_y), (x, y), (255, 255, 255), thickness=3)
+        cv.line(bild, (temp_x, temp_y), (x, y), (255, 255, 255), thickness=3)
 
     if cv.waitKey(1) & 0xFF == 27: break
 cv.destroyAllWindows()
-cv.imwrite("E:/processed_images/lines_white.png", bild_re)
+cv.imwrite("E:/processed_images/lines_white.png", bild)
 
 #print(values)
 dot_values_file = open("dot_coordinates", "a")
 dot_values_file.write(str(values))
 dot_values_file.close()
+
+#Problem-> es wird auf resizedem bild gezeichnet aber die daten sollen auf die Originaldatei geschrieben werden..

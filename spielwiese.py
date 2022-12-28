@@ -1,6 +1,15 @@
 import numpy as np
 import cv2 as cv
+import pandas as pd
 
+from csv import DictReader
+
+file_handle = open("data.csv", "r", encoding="utf8")
+csv_reader = DictReader(file_handle)
+for row in csv_reader:
+    print(row)
+
+file_handle.close()
 
 #a = np.array([[0,1],[3,4]]) # row then column!
 #print(a)
@@ -30,12 +39,13 @@ import cv2 as cv
         #print("Number is uneven")
     #i += 1
 
-import csv
+#
+# with open('data.csv') as csvfile:
+#     with open('data.csv', 'w', newline='') as new_file:
+#         csv_reader = csv.DictReader(csvfile)
+#         fieldnames = ['firstname', 'lastname', 'email', 'age']
+#         csv_writer = csv.DictWriter(new_file, fieldnames=fieldnames)
+#         for row in csv_reader:
+#             csv_writer.writerow(row)
 
-with open('data.csv') as csvfile:
-    with open('data.csv', 'w', newline='') as new_file:
-        csv_reader = csv.DictReader(csvfile)
-        fieldnames = ['firstname', 'lastname', 'email', 'age']
-        csv_writer = csv.DictWriter(new_file, fieldnames=fieldnames)
-        for row in csv_reader:
-            csv_writer.writerow(row)
+

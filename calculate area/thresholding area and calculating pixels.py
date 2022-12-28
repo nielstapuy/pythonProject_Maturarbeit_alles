@@ -2,8 +2,8 @@ import numpy as np
 import cv2 as cv
 import ka
 
-img = cv.imread("E:/processed_images/filled_image.png", 0)        #0 für RGB -> 0 farbchannels??
-img_re = ka.resize_img(img, scale=0.8)
+img = cv.imread("E:/Software_img_processing/processed_images/filled_image.png", 0)        #0 für RGB -> 0 farbchannels??
+img_re = ka.resize_img(img, scale=1)
 
 def nothing(x):
   pass

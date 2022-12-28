@@ -4,13 +4,13 @@ import glob
 import ka
 import imutils
 
-path = glob.glob('E:/123/*.JPG')       #NOTE: Bilder dürfen wohl nicht zu gross sein dann geht das stitchen nicht mehr!!
+path = glob.glob('E:/Software_img_processing/123/*.JPG')       #NOTE: Bilder dürfen wohl nicht zu gross sein dann geht das stitchen nicht mehr!!
 images = []
 
 for image in path:
     img = cv.imread(image)
     images.append(img)      #append füegt öpis ane tupple ane (bsp. currencies..) da werded die einzelne img id images list kopiert
-    re = ka.resize_img(img)
+    re = ka.resize_img(img, scale= 0.3)
     cv.imshow('Image', re)
     k = cv.waitKey(0) & 0xff  # press ESC to exit
     if k == 27:
@@ -23,9 +23,9 @@ imageStitcher = cv.Stitcher_create()
 error, stitched_img = imageStitcher.stitch(images)
 
 if not error:
-    #re_stitch = ka.resize_img(stitched_img)
+    re_stitch = ka.resize_img(stitched_img)
     cv.imwrite("stitchedOutput2!.png", stitched_img)
-    cv.imshow("Stitched Image 2", stitched_img)
+    cv.imshow("Stitched Image 2", re_stitch)
     k = cv.waitKey(0) & 0xff  # press ESC to exit
     if k == 27:
         cv.destroyAllWindows()
@@ -35,7 +35,7 @@ if not error:
     gray = cv.cvtColor(stitched_img, cv.COLOR_BGR2GRAY)
     thresh_img = cv.threshold(gray, 0, 255, cv.THRESH_BINARY)[1]
 
-    thresh_img_re = ka.resize_img(thresh_img)
+    thresh_img_re = ka.resize_img(thresh_img, scale= 0.3)
 
     cv.imshow("Threshold Image", thresh_img_re)
     k = cv.waitKey(0) & 0xff  # press ESC to exit
@@ -73,7 +73,7 @@ if not error:
 
     stitched_img = stitched_img[y:y + h, x:x + w]
 
-    stitched_img_re = ka.resize_img(stitched_img)
+    stitched_img_re = ka.resize_img(stitched_img, scale= 0.3)
 
     cv.imwrite("E:/processed_images/stitchedOutputProcessed.png", stitched_img)
 

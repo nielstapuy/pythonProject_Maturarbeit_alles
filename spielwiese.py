@@ -1,15 +1,33 @@
+import cv2
 import numpy as np
-import cv2 as cv
-import pandas as pd
 
-from csv import DictReader
+img = cv2.imread("E:/Software_img_processing/processed_images/filled_image.png")
+overlay = img.copy()
 
-file_handle = open("data.csv", "r", encoding="utf8")
-csv_reader = DictReader(file_handle)
-for row in csv_reader:
-    print(row)
+# Rectangle parameters
+x, y, w, h = 10, 10, 300, 300
+# A filled rectangle
+cv2.rectangle(overlay, (x, y), (x+w, y+h), (0, 200, 0), -1)
 
-file_handle.close()
+alpha = 0.2  # Transparency factor.
+
+# Following line overlays transparent rectangle
+# over the image
+image_new = cv2.addWeighted(overlay, alpha, img, 1 - alpha, 0)
+
+cv2.imshow("some", image_new)
+cv2.waitKey(0)
+
+cv2.destroyAllWindows()
+
+# from csv import DictReader
+#
+# file_handle = open("data.csv", "r", encoding="utf8")
+# csv_reader = DictReader(file_handle)
+# for row in csv_reader:
+#     print(row)
+#
+# file_handle.close()
 
 #a = np.array([[0,1],[3,4]]) # row then column!
 #print(a)
@@ -48,4 +66,6 @@ file_handle.close()
 #         for row in csv_reader:
 #             csv_writer.writerow(row)
 
+# img = cv.imread('E:/Software_img_processing/processed_images/filled_image.png', 0)
+# print(img)
 

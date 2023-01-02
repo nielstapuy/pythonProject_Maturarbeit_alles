@@ -4,7 +4,7 @@ import glob
 import ka
 import imutils
 
-path = glob.glob('E:/Software_img_processing/123/*.JPG')       #NOTE: Bilder dürfen wohl nicht zu gross sein dann geht das stitchen nicht mehr!!
+path = glob.glob('E:/Stitching test/*.jpg')       #NOTE: Bilder dürfen wohl nicht zu gross sein dann geht das stitchen nicht mehr!!
 images = []
 
 for image in path:
@@ -16,14 +16,14 @@ for image in path:
     if k == 27:
         cv.destroyAllWindows()
 
-print(len(path))
+#print(len(path))
 
 imageStitcher = cv.Stitcher_create()
 
 error, stitched_img = imageStitcher.stitch(images)
 
 if not error:
-    re_stitch = ka.resize_img(stitched_img)
+    re_stitch = ka.resize_img(stitched_img, scale= 0.3)
     cv.imwrite("stitchedOutput2!.png", stitched_img)
     cv.imshow("Stitched Image 2", re_stitch)
     k = cv.waitKey(0) & 0xff  # press ESC to exit

@@ -3,11 +3,11 @@ import numpy as np
 import ka
 import pandas as pd
 
-bild = cv.imread('E:/Software_img_processing/16cm2_tests/6.JPG')
-bild_re = ka.resize_img(bild, scale=0.3)
+bild = cv.imread('E:/Test Berechnung/30.JPG')
+bild_re = ka.resize_img(bild, scale=0.2)
 
-dot_values_file = open("dot_coordinates", "w") #->json library
-dot_values_file.close()
+# dot_values_file = open("dot_coordinates", "w") #->json library
+# dot_values_file.close()
 
 #global coordinates)
 x = 0
@@ -49,13 +49,24 @@ def draw(event, current_x, current_y, flags, params):
 
 cv.imshow('Draw', bild_re)
 
+def nothing(x):
+  pass
+
+cv.namedWindow('trackbar')
+
+cv.createTrackbar('thickness','trackbar',1,20, nothing)
+
+# a = cv.getTrackbarPos('min','trackbars')
+# b = cv.getTrackbarPos('max','trackbars')
+
 cv.setMouseCallback('Draw', draw)
 
 while True:
     cv.imshow('Draw', bild_re)
 
     if x != first_x and y != first_y:
-        cv.line(bild_re, (temp_x, temp_y), (x, y), (255, 255, 255), thickness=3)
+        n = cv.getTrackbarPos('thickness','trackbar')
+        cv.line(bild_re, (temp_x, temp_y), (x, y), (255, 255, 255), thickness=n)
 
     if cv.waitKey(1) & 0xFF == 27: break
 cv.destroyAllWindows()

@@ -4,19 +4,19 @@ import glob
 import ka
 import imutils
 
-path = glob.glob('E:/Stitching test/*.jpg')       #NOTE: Bilder dürfen wohl nicht zu gross sein dann geht das stitchen nicht mehr!!
+path = glob.glob('E:/Stitching test/*.JPG')       #NOTE: Bilder dürfen wohl nicht zu gross sein dann geht das stitchen nicht mehr!!
 images = []
 
 for image in path:
     img = cv.imread(image)
     images.append(img)      #append füegt öpis ane tupple ane (bsp. currencies..) da werded die einzelne img id images list kopiert
-    re = ka.resize_img(img, scale= 0.3)
-    cv.imshow('Image', re)
+    re = ka.resize_img(img, scale=0.3)
+    #cv.imshow('Image', re)
     k = cv.waitKey(0) & 0xff  # press ESC to exit
     if k == 27:
         cv.destroyAllWindows()
 
-#print(len(path))
+print(len(path))
 
 imageStitcher = cv.Stitcher_create()
 
@@ -35,7 +35,7 @@ if not error:
     gray = cv.cvtColor(stitched_img, cv.COLOR_BGR2GRAY)
     thresh_img = cv.threshold(gray, 0, 255, cv.THRESH_BINARY)[1]
 
-    thresh_img_re = ka.resize_img(thresh_img, scale= 0.3)
+    thresh_img_re = ka.resize_img(thresh_img, scale=0.1)
 
     cv.imshow("Threshold Image", thresh_img_re)
     k = cv.waitKey(0) & 0xff  # press ESC to exit
@@ -73,7 +73,7 @@ if not error:
 
     stitched_img = stitched_img[y:y + h, x:x + w]
 
-    stitched_img_re = ka.resize_img(stitched_img, scale= 0.3)
+    stitched_img_re = ka.resize_img(stitched_img, scale=0.1)
 
     cv.imwrite("E:/processed_images/stitchedOutputProcessed.png", stitched_img)
 
@@ -83,4 +83,4 @@ if not error:
         cv.destroyAllWindows()
 
 else:
-    print("Images could not be stitched!\nLikely not enough keypoints being detected!")
+    print("Bilder konnten nicht gestitcht werden!\nWahrscheinlich konnten nicht genügend Keypoints gefunden werden!")

@@ -4,10 +4,27 @@ import glob
 import ka
 import imutils
 
+#         ### VIDEO IN EINZELNEN FRAMES SPEICHERN ###
+#
+# cap = cv.VideoCapture('E:/Test_VID.MP4')
+# count = 0
+# while cap.isOpened():
+#     ret,frame = cap.read()
+#     #cv.imshow('Video', frame)
+#     cv.imwrite("E:/Software_img_processing/Vids/frame%d.jpg" % count, frame)
+#     count = count + 1
+#     if cv.waitKey(10) & 0xFF == ord('q'):
+#         break
+#
+# cap.release()
+# cv.destroyAllWindows() # destroy all opened windows
+
+path_videos = glob.glob('E:/Software_img_processing/Vids/*.JPG')
+
 path = glob.glob('E:/Stitching test/*.JPG')       #NOTE: Bilder dürfen wohl nicht zu gross sein dann geht das stitchen nicht mehr!!
 images = []
 
-for image in path:
+for image in path_videos:
     img = cv.imread(image)
     images.append(img)      #append füegt öpis ane tupple ane (bsp. currencies..) da werded die einzelne img id images list kopiert
     re = ka.resize_img(img, scale=0.3)

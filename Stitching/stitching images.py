@@ -19,16 +19,16 @@ import imutils
 # cap.release()
 # cv.destroyAllWindows() # destroy all opened windows
 
-path_videos = glob.glob('E:/Software_img_processing/Vids/*.JPG')
+path = glob.glob('E:/Software_img_processing/Buch 20cm/*.jpg')
 
-path = glob.glob('E:/Stitching test/*.JPG')       #NOTE: Bilder dürfen wohl nicht zu gross sein dann geht das stitchen nicht mehr!!
+#path = glob.glob('E:/'NAME DATEI ORDNER'/*.JPG')       #NOTE: Bilder dürfen wohl nicht zu gross sein dann geht das stitchen nicht mehr!!
 images = []
 
-for image in path_videos:
+for image in path:
     img = cv.imread(image)
     images.append(img)      #append füegt öpis ane tupple ane (bsp. currencies..) da werded die einzelne img id images list kopiert
     re = ka.resize_img(img, scale=0.3)
-    #cv.imshow('Image', re)
+    cv.imshow('Image', re)
     k = cv.waitKey(0) & 0xff  # press ESC to exit
     if k == 27:
         cv.destroyAllWindows()
@@ -92,7 +92,7 @@ if not error:
 
     stitched_img_re = ka.resize_img(stitched_img, scale=0.1)
 
-    cv.imwrite("E:/processed_images/stitchedOutputProcessed.png", stitched_img)
+    cv.imwrite("E:/Software_img_processing/processed_images/stitchedOutputProcessed.png", stitched_img)
 
     cv.imshow("Stitched Image Processed", stitched_img_re)
     k = cv.waitKey(0) & 0xff  # press ESC to exit

@@ -3,7 +3,8 @@ import numpy as np
 import ka
 import pandas as pd
 
-bild = cv.imread('E:/Test Berechnung/30.JPG')
+bild = cv.imread('E:/Software_img_processing/processed_images/stitchedOutputProcessed.png')
+# bild = cv.imread('E:/Test Berechnung/35.jpg')
 bild_re = ka.resize_img(bild, scale=0.2)
 
 # dot_values_file = open("dot_coordinates", "w") #->json library

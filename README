@@ -1,13 +1,23 @@
-Heyhey
+Der Leser der Maturitätsarbeit "Bauen und Programmieren einer Geomatikdrohne" wird herzlich dazu eingeladen, den geschriebenen Code zu begutachten.
 
-Kurze Liste zu welches file für was ist:
+Die Liste gibt Aufschluss darüber welche File für was genutzt wird:
 
 ka.py: resizing images
-connect dots to lines.py: Formen zeichnen
-for Loop.py: Versuch Stitching prozess zu optimieren
-pixel calculation_veraltet.py: alter Versuch Pixel zu berechnen (offene Fragen)
-pixels to meters.py: umrechnungsfunktion
 spielwiese.py: für tutorials und um zeug auszutesten
-stitching imags.py: Stitching Software-> SourceCode irgendein YT_Tut
-thresholding area and calculating pixels.py: Idee, dass man die gezeichnete Form thresholden kann und dann pixel zählen lässt
-Problem taucht allerdings bei bilder mit verschiedenen resizings auf etc.. Stimmt nicht wirklich, könnte aber eine einfache Lösung sein.
+
+    ###STITCHING###
+Capture Videoframes.py: Videoframes zu Datei.JPG
+stitching images.py: Stitching Software-> SourceCode YT_Tut
+for Loop.py: Versuch Stitching prozess zu optimieren
+
+
+      ###DRAW###
+connect dots to lines.py: Formen zeichnen
+fill white_lines_form.py: Markierte Fläche weiss füllen
+dot_coordinates: speichert Bildkoordinaten in dataframe
+
+
+    ###UMRECHUNG###
+thresholding area and calculating pixels.py: Pixel des Flächeninhalts werden gezählt
+pixels to meters.py: umrechnungsfunktion
+pixel calculation_veraltet.py: kann ignoriert werden
